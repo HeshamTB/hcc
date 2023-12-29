@@ -69,7 +69,7 @@ stmt : TOKEN_IF TOKEN_LPAREN expr TOKEN_RPAREN stmt
         { $$ = stmt_create(STMT_BLOCK,0,0,0,0,$2,0,0); }
     ;
 
-stmt_list : stmt stmt_list { $$ = $1; $1->next $2; }
+stmt_list : stmt stmt_list { $$ = $1; $1->next = $2; }
     | { $$ = 0; }
     ;
 
@@ -86,7 +86,7 @@ term : term TOKEN_MUL factor { $$ = expr_create(EXPR_MUL,$1,$3); }
 factor : TOKEN_MINUS factor 
             { $$ = expr_create(EXPR_SUB, expr_create_integer_literal(0), $2); }
     | TOKEN_LPAREN expr TOKEN_RPAREN { $$ = $2; }
-    | TOKEN_INT { $$ = expr_create_integer_literal(atoi(yytext)); }
+    | TOKEN_NUMBER { $$ = expr_create_integer_literal(atoi(yytext)); }
     ;
 
 type : TOKEN_INT { $$ = create_type(TYPE_INTEGER,0,0); }

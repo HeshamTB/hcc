@@ -83,7 +83,7 @@ struct decl {
     struct decl* next;
 };
 
-struct expr* expr_create(expr_t kind, struct expr* left, struct expr* right);
+//struct expr* expr_create(expr_t kind, struct expr* left, struct expr* right);
 
 
 #endif // PARSER_H
