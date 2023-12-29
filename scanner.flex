@@ -18,6 +18,9 @@ if { return TOKEN_IF; }
 \) { return TOKEN_RPAREN; }
 \{ { return TOKEN_LBRACE; }
 \} { return TOKEN_RBRACE; }
+=  { return TOKEN_ASSIGN; }
+: { return TOKEN_COLON; }
+; { return TOKEN_SEMI; }
 void { return TOKEN_VOID; }
 int { return TOKEN_INT; }
 while { return TOKEN_WHILE; }
